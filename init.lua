@@ -1,15 +1,24 @@
 
-keyNone = {}
-keyMod = {'control' , 'option', 'command'}
+
+-- key to abort
 escapeKey = {keyNone, 'escape'}
 
--- used by next model to close previous helper
-local previousHelperID = nil
+-- max length of helper measured in character
 recursiveBindHelperMaxLineLengthInChar = 80
+
+-- format of helper, the helper is just a hs.alert
 recursiveBindHelperFormat = {atScreenEdge=2,
                              strokeColor={ white = 0, alpha = 2 },
                              textFont='SF Mono'}
 
+-- whether to show helper
+showBindHelper = true
+
+-- used by next model to close previous helper
+local previousHelperID = nil
+
+-- generate a string representation of a key spec
+-- {{'shift', 'command'}, 'a} -> 'shift+command+a'
 local function createKeyName(key)
    -- key is in the form {{modifers}, key, (optional) name}
    -- create proper key name for helper
@@ -34,6 +43,7 @@ local function createKeyName(key)
    end
 end
 
+-- show helper of available keys of current layer
 local function showHelper(keyFuncNameTable)
    -- keyFuncNameTable is a table that key is key name and value is description
    local helper = ''
@@ -51,11 +61,10 @@ local function showHelper(keyFuncNameTable)
       separator = '   '
    end
    helper = string.match(helper, '[^\n].+$')
-   -- bottom of screen, lasts for 3 sec, no border
    previousHelperID = hs.alert.show(helper, recursiveBindHelperFormat, true)
 end
-   
-showBindHelper = true
+
+-- the actual binding function
 function recursiveBind(keymap)
    if type(keymap) == 'function' then
       -- in this case "keymap" is actuall a function
@@ -95,6 +104,10 @@ end
 -- mymap = {f = { r = 1, m = 2}, s = {r = 3, m = 4}, m = 5}
 -- testrecursiveModal(mymap)
 
+-- this function is used by helper to display 
+-- appropriate 'shift + key' bindings
+-- it turns a lower key to the corresponding
+-- upper key on keyboard
 function keyboardUpper(key)
    local upperTable = {
     a='A', 
@@ -272,6 +285,14 @@ function moveWindowMode()
    moveWindowModal:enter()
 end
 
+-- Spec of keymap:
+-- Every key is of format {{modifers}, key, (optional) description}
+-- The first two element is what you usually pass into a hs.hotkey.bind() function.
+--
+-- Each value of key can be in two form:
+-- 1. A function. Then pressing the key invokes the function
+-- 2. A table. Then pressing the key bring to another layer of keybindings.
+--    And the table have the same format of top table: keys to keys, value to table or function
 mymapWithName = {
    [singleKey('`', 'run command')] = runCommand,
    [singleKey('f', 'find+')] = {
@@ -290,4 +311,7 @@ mymapWithName = {
    [singleKey('l', '→')] = function() moveAndResize('right') moveWindowMode() end
 }
 
+
+keyNone = {}
+keyMod = {'control' , 'option', 'command'}
 hs.hotkey.bind(keyMod, 'space', nil, recursiveBind(mymapWithName))
