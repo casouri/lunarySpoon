@@ -114,4 +114,18 @@ function obj.moveWindowRight()
    moveAndResize('right')
 end
 
+--- Window.moveWindowCenter
+--- Function
+--- Move the focused window to center.
+function obj.moveWindowCenter()
+   moveAndResize('center')
+end
+
+--- Window.moveWindowFullscreen
+--- Function
+--- Move the focused window fullscreen.
+function obj.moveWindowFullscreen()
+   moveAndResize('fullscreen')
+end
+
 return obj
