@@ -14,6 +14,7 @@ function openWithFinder(path)
 end
 
 
+singleKey = spoon.Binder.singleKey
 -- Spec of keymap:
 -- Every key is of format {{modifers}, key, (optional) description}
 -- The first two element is what you usually pass into a hs.hotkey.bind() function.
@@ -23,21 +24,21 @@ end
 -- 2. A table. Then pressing the key bring to another layer of keybindings.
 --    And the table have the same format of top table: keys to keys, value to table or function
 mymapWithName = {
-   [spoon.Binder.singleKey('`', 'run command')] = runCommand,
-   [spoon.Binder.singleKey('f', 'find+')] = {
-      [spoon.Binder.singleKey('D', 'Desktop')] = function() openWithFinder('~/Desktop') end,
-      [spoon.Binder.singleKey('p', 'Project')] = function() openWithFinder('~/p') end,
-      [spoon.Binder.singleKey('d', 'Download')] = function() openWithFinder('~/Downloads') end,
-      [spoon.Binder.singleKey('a', 'Application')] = function() openWithFinder('~/Applications') end,
-      [spoon.Binder.singleKey('h', 'home')] = function() openWithFinder('~') end,
-      [spoon.Binder.singleKey('f', 'hello')] = function() hs.alert.show('hello!') end},
-   [spoon.Binder.singleKey('t', 'toggle+')] = {
-      [spoon.Binder.singleKey('v', 'file visible')] = function() hs.eventtap.keyStroke({'cmd', 'shift'}, '.') end
+   [singleKey('`', 'run command')] = runCommand,
+   [singleKey('f', 'find+')] = {
+      [singleKey('D', 'Desktop')] = function() openWithFinder('~/Desktop') end,
+      [singleKey('p', 'Project')] = function() openWithFinder('~/p') end,
+      [singleKey('d', 'Download')] = function() openWithFinder('~/Downloads') end,
+      [singleKey('a', 'Application')] = function() openWithFinder('~/Applications') end,
+      [singleKey('h', 'home')] = function() openWithFinder('~') end,
+      [singleKey('f', 'hello')] = function() hs.alert.show('hello!') end},
+   [singleKey('t', 'toggle+')] = {
+      [singleKey('v', 'file visible')] = function() hs.eventtap.keyStroke({'cmd', 'shift'}, '.') end
    },
-   -- [spoon.Binder.singleKey('h', '←')] = function() moveAndResize('left') moveWindowMode() end,
-   -- [spoon.Binder.singleKey('j', '↓')] = function() moveAndResize('down') moveWindowMode() end,
-   -- [spoon.Binder.singleKey('k', '↑')] = function() moveAndResize('up') moveWindowMode() end,
-   -- [spoon.Binder.singleKey('l', '→')] = function() moveAndResize('right') moveWindowMode() end
+   -- [singleKey('h', '←')] = function() moveAndResize('left') moveWindowMode() end,
+   -- [singleKey('j', '↓')] = function() moveAndResize('down') moveWindowMode() end,
+   -- [singleKey('k', '↑')] = function() moveAndResize('up') moveWindowMode() end,
+   -- [singleKey('l', '→')] = function() moveAndResize('right') moveWindowMode() end
 }
 
 keyNone = {}
