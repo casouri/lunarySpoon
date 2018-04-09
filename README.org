@@ -1,8 +1,8 @@
-#+ spaceHammer
+#+TITLE: spaceHammer
 
 leader keys in hammerspoon
 
 * Install
 #+BEGIN_SRC shell
-git clone 
+git clone https://github.com/casouri/spaceHammer.git ~/.hammerspoon
 #+END_SRC
