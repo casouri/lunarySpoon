@@ -5,6 +5,7 @@ leader keys in hammerspoon
 * Install
 #+BEGIN_SRC shell
 git clone https://github.com/casouri/spaceHammer.git ~/.hammerspoon
+cp init.lua.example init.lua
 #+END_SRC
 
 * Screenshot
