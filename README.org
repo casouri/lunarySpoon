@@ -6,3 +6,9 @@ leader keys in hammerspoon
 #+BEGIN_SRC shell
 git clone https://github.com/casouri/spaceHammer.git ~/.hammerspoon
 #+END_SRC
+
+* Screenshot
+
+[[./screenshot/screenshot0.png][./screenshot/screenshot0.png]]
+
+[[./screenshot/screenshot1.png][./screenshot/screenshot1.png]]
