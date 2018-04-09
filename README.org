@@ -8,6 +8,10 @@ git clone https://github.com/casouri/spaceHammer.git ~/.hammerspoon
 cp init.lua.example init.lua
 #+END_SRC
 
+* Dependencies
+** Spoons
+- [[https://github.com/Hammerspoon/Spoons/raw/master/Spoons/Emojis.spoon.zip][Emojis]]
+
 * Screenshot
 
 [[./screenshot/screenshot0.png][./screenshot/screenshot0.png]]
