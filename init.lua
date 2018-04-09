@@ -1,53 +1,85 @@
-hs.loadSpoon('Window')
-hs.loadSpoon('Binder')
+sh = require('spaceHammer')
 
-function runCommand()
-   local buttonValue, command = hs.dialog.textPrompt('', '', '', 'OK', "Cancel")
-   if buttonValue == 'OK' then
-      hs.execute(command)
-   end
-end
-
-function openWithFinder(path)
-   os.execute('open '..path)
-   hs.application.launchOrFocus('Finder')
-end
-
-
-singleKey = spoon.Binder.singleKey
--- Spec of keymap:
--- Every key is of format {{modifers}, key, (optional) description}
--- The first two element is what you usually pass into a hs.hotkey.bind() function.
 --
--- Each value of key can be in two form:
--- 1. A function. Then pressing the key invokes the function
--- 2. A table. Then pressing the key bring to another layer of keybindings.
---    And the table have the same format of top table: keys to keys, value to table or function
-mymapWithName = {
-   [singleKey('`', 'run command')] = runCommand,
-   [singleKey('f', 'find+')] = {
-      [singleKey('D', 'Desktop')] = function() openWithFinder('~/Desktop') end,
-      [singleKey('p', 'Project')] = function() openWithFinder('~/p') end,
-      [singleKey('d', 'Download')] = function() openWithFinder('~/Downloads') end,
-      [singleKey('a', 'Application')] = function() openWithFinder('~/Applications') end,
-      [singleKey('h', 'home')] = function() openWithFinder('~') end,
-      [singleKey('f', 'hello')] = function() hs.alert.show('hello!') end},
-   [singleKey('t', 'toggle+')] = {
-      [singleKey('v', 'file visible')] = function() hs.eventtap.keyStroke({'cmd', 'shift'}, '.') end
-   },
-   -- [singleKey('h', '←')] = function() moveAndResize('left') moveWindowMode() end,
-   -- [singleKey('j', '↓')] = function() moveAndResize('down') moveWindowMode() end,
-   -- [singleKey('k', '↑')] = function() moveAndResize('up') moveWindowMode() end,
-   -- [singleKey('l', '→')] = function() moveAndResize('right') moveWindowMode() end
+-- Config
+--
+
+-- Emojis
+hs.loadSpoon('Emojis')
+sh.useSpoon{
+   name = 'Emojis',
+   config = function()
+      local emojiModal = hs.hotkey.modal.new()
+      emojiModal:bind({}, 'escape', function()
+            spoon.Emojis.chooser:hide()
+            emojiModal:exit()
+      end)
+
+      function insertEmoji()
+         spoon.Emojis.chooser:show()
+         emojiModal:enter()
+      end
+   end
 }
 
-keyNone = {}
-hyperMod = {'control' , 'option', 'command'}
+-- Binder
+sh.useSpoon{
+   name = 'Binder',
+   config = function()
+      -- just a shortcut
+      singleKey = spoon.Binder.singleKey
+      -- Spec of keymap:
+      -- Every key is of format {{modifers}, key, (optional) description}
+      -- The first two element is what you usually pass into a hs.hotkey.bind() function.
+      --
+      -- Each value of key can be in two form:
+      -- 1. A function. Then pressing the key invokes the function
+      -- 2. A table. Then pressing the key bring to another layer of keybindings.
+      --    And the table have the same format of top table: keys to keys, value to table or function
+      mymapWithName = {
+         [singleKey('`', 'run command')] = runCommand,
+         [singleKey('f', 'find+')] = {
+            [singleKey('D', 'Desktop')] = function() openWithFinder('~/Desktop') end,
+            [singleKey('p', 'Project')] = function() openWithFinder('~/p') end,
+            [singleKey('d', 'Download')] = function() openWithFinder('~/Downloads') end,
+            [singleKey('a', 'Application')] = function() openWithFinder('~/Applications') end,
+            [singleKey('h', 'home')] = function() openWithFinder('~') end,
+            [singleKey('f', 'hello')] = function() hs.alert.show('hello!') end},
+         [singleKey('t', 'toggle+')] = {
+            [singleKey('v', 'file visible')] = function() hs.eventtap.keyStroke({'cmd', 'shift'}, '.') end
+         },
+         [singleKey('o', 'open+')] = {
+            [singleKey('e', 'Emacs')] = function() hs.application.launchOrFocus('Emacs') end,
+            [singleKey('s', 'Safari')] = function() hs.application.launchOrFocus('Safari') end,
+            [singleKey('f', 'Finder')] = function() hs.application.launchOrFocus('Finder') end,
+            [singleKey('d', 'Dictionary')] = function() hs.application.launchOrFocus('Dictionary') end,
+            [singleKey('m', 'Mail')] = function() hs.application.launchOrFocus('Mail') end,
+            [singleKey('q', 'QQ')] = function() hs.application.launchOrFocus('QQ') end,
+            [singleKey('w', 'Wechat')] = function() hs.application.launchOrFocus('Wechat') end,
+            [singleKey('g', 'Google')] = function() os.execute('open http://google.com') end,
+         },
+         [singleKey('i', 'insert+')] = {
+            [singleKey('e', 'emoji')] = insertEmoji,
+         }
+      }
 
-hs.hotkey.bind(hyperMod, 'space', nil, spoon.Binder.recursiveBind(mymapWithName))
-hs.hotkey.bind(hyperMod, 'h', nil, spoon.Window.moveWindowLeft)
-hs.hotkey.bind(hyperMod, 'j', nil, spoon.Window.moveWindowDown)
-hs.hotkey.bind(hyperMod, 'k', nil, spoon.Window.moveWindowUp)
-hs.hotkey.bind(hyperMod, 'l', nil, spoon.Window.moveWindowRight)
-hs.hotkey.bind(hyperMod, 'f', nil, spoon.Window.moveWindowFullscreen)
-hs.hotkey.bind(hyperMod, 'c', nil, spoon.Window.moveWindowCenter)
+      local keyNone = {}
+      local hyperMod = {'control' , 'option', 'command'}
+      hs.hotkey.bind(hyperMod, 'space', spoon.Binder.recursiveBind(mymapWithName))
+      -- config ends here
+   end
+}
+
+-- Window
+sh.useSpoon{
+   name = 'Window',
+   config = function()
+      local hyperMod = {'control' , 'option', 'command'}
+      hs.hotkey.bind(hyperMod, 'h', spoon.Window.moveWindowLeft)
+      hs.hotkey.bind(hyperMod, 'j', spoon.Window.moveWindowDown)
+      hs.hotkey.bind(hyperMod, 'k', spoon.Window.moveWindowUp)
+      hs.hotkey.bind(hyperMod, 'l', spoon.Window.moveWindowRight)
+      hs.hotkey.bind(hyperMod, 'f', spoon.Window.moveWindowFullscreen)
+      hs.hotkey.bind(hyperMod, 'c', spoon.Window.moveWindowCenter)
+   end
+}
