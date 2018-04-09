@@ -15,20 +15,26 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- key to abort, default to {keyNone, 'escape'}
 obj.escapeKey = {keyNone, 'escape'}
 
---- Binder.recursiveBindHelperMaxLineLengthInChar
+--- Binder.helperEntryEachLine
 --- Variable
---- max length of helper measured in character
---- default is 80
-obj.recursiveBindHelperMaxLineLengthInChar = 80
+--- Number of entries each line of helper. Default to 5.
+obj.helperEntryEachLine = 5
 
---- Binder.recursiveBindHelperFormat
+--- Binder.helperEntryLengthInChar
+--- Variable
+--- Length of each entry in char. Default to 20.
+obj.helperEntryLengthInChar = 20
+
+--- Binder.helperFormat
 --- format of helper, the helper is just a hs.alert
 --- default to {atScreenEdge=2,
----                          strokeColor={ white = 0, alpha = 2 },
----                          textFont='SF Mono'}
-obj.recursiveBindHelperFormat = {atScreenEdge=2,
-                             strokeColor={ white = 0, alpha = 2 },
-                             textFont='SF Mono'}
+---             strokeColor={ white = 0, alpha = 2 },
+---             textFont='SF Mono'
+---             textSize=20}
+obj.helperFormat = {atScreenEdge=2,
+                    strokeColor={ white = 0, alpha = 2 },
+                    textFont='SF Mono',
+                    textSize=20}
 
 --- Binder.showBindHelper()
 --- whether to show helper, can be true of false
@@ -159,19 +165,28 @@ local function showHelper(keyFuncNameTable)
    local helper = ''
    local separator = '' -- first loop doesn't need to add a separator, because it is in the very front. 
    local lastLine = ''
+   local count = 0
    for keyName, funcName in pairs(keyFuncNameTable) do
-      -- only measure the length of current line
-      lastLine = string.match(helper, '\n.-$')
-      if lastLine and string.len(lastLine) > obj.recursiveBindHelperMaxLineLengthInChar then
-         separator = '\n'
-      elseif not lastLine then
-         separator = '\n'
+      count = count + 1
+      local newEntry = keyName..' → '..funcName
+      -- make sure each entry is of the same length
+      if string.len(newEntry) > obj.helperEntryLengthInChar then
+         newEntry = string.sub(newEntry, 1, obj.helperEntryLengthInChar - 2)..'..'
+      elseif string.len(newEntry) < obj.helperEntryLengthInChar then
+         newEntry = newEntry..string.rep(' ', obj.helperEntryLengthInChar - string.len(newEntry))
       end
-      helper = helper..separator..keyName..' → '..funcName
-      separator = '   '
+      -- create new line for every helperEntryEachLine entries
+      if count % (obj.helperEntryEachLine + 1) == 0 then
+         separator = '\n '
+      elseif count == 1 then
+         separator = ' '
+      else
+         separator = '  '
+      end
+      helper = helper..separator..newEntry
    end
    helper = string.match(helper, '[^\n].+$')
-   previousHelperID = hs.alert.show(helper, obj.recursiveBindHelperFormat, true)
+   previousHelperID = hs.alert.show(helper, obj.helperFormat, true)
 end
 
 --- Binder.recursiveBind(keymap)
