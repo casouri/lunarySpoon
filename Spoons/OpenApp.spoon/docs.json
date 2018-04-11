@@ -1,0 +1,118 @@
+[
+  {
+    "Constant" : [
+
+    ],
+    "submodules" : [
+
+    ],
+    "Function" : [
+      {
+        "doc" : "Call this function to pop chooser to choose applications.",
+        "stripped_doc" : [
+          "Call this function to pop chooser to choose applications."
+        ],
+        "parameters" : [
+
+        ],
+        "name" : "show",
+        "notes" : [
+
+        ],
+        "signature" : "OpenApp.show()",
+        "type" : "Function",
+        "returns" : [
+
+        ],
+        "desc" : "Call this function to pop chooser to choose applications.",
+        "def" : "OpenApp.show()"
+      }
+    ],
+    "Variable" : [
+      {
+        "doc" : "OpenApp search paths in this list for applications.",
+        "stripped_doc" : [
+          "OpenApp search paths in this list for applications."
+        ],
+        "parameters" : [
+
+        ],
+        "name" : "searchPath",
+        "notes" : [
+
+        ],
+        "signature" : "OpenApp.searchPath",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "desc" : "OpenApp search paths in this list for applications.",
+        "def" : "OpenApp.searchPath"
+      }
+    ],
+    "stripped_doc" : [
+
+    ],
+    "Deprecated" : [
+
+    ],
+    "desc" : "open a chooser to open apps.",
+    "type" : "Module",
+    "Constructor" : [
+
+    ],
+    "doc" : "open a chooser to open apps.",
+    "Field" : [
+
+    ],
+    "Command" : [
+
+    ],
+    "Method" : [
+
+    ],
+    "items" : [
+      {
+        "doc" : "OpenApp search paths in this list for applications.",
+        "stripped_doc" : [
+          "OpenApp search paths in this list for applications."
+        ],
+        "parameters" : [
+
+        ],
+        "name" : "searchPath",
+        "notes" : [
+
+        ],
+        "signature" : "OpenApp.searchPath",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "desc" : "OpenApp search paths in this list for applications.",
+        "def" : "OpenApp.searchPath"
+      },
+      {
+        "doc" : "Call this function to pop chooser to choose applications.",
+        "stripped_doc" : [
+          "Call this function to pop chooser to choose applications."
+        ],
+        "parameters" : [
+
+        ],
+        "name" : "show",
+        "notes" : [
+
+        ],
+        "signature" : "OpenApp.show()",
+        "type" : "Function",
+        "returns" : [
+
+        ],
+        "desc" : "Call this function to pop chooser to choose applications.",
+        "def" : "OpenApp.show()"
+      }
+    ],
+    "name" : "OpenApp"
+  }
+]
