@@ -9,6 +9,11 @@ command_table={}
 -- Commander
 sh.useSpoon{
    name = 'Commander',
+   config = function()
+      spoon.Commander.chooser:bgDark(true)
+      spoon.Commander.forceLayout = 'ABC'
+   end
+
 }
 
 -- Emojis
@@ -29,6 +34,15 @@ sh.useSpoon{
    end
 }
 
+-- OpenApp
+sh.useSpoon{
+   name = 'OpenApp',
+   config = function()
+      spoon.OpenApp.chooser:bgDark(true)
+      spoon.OpenApp.forceLayout = 'ABC'
+   end
+}
+
 -- Binder
 sh.useSpoon{
    name = 'Binder',
@@ -44,7 +58,7 @@ sh.useSpoon{
       -- 2. A table. Then pressing the key bring to another layer of keybindings.
       --    And the table have the same format of top table: keys to keys, value to table or function
       mymapWithName = {
-         [singleKey('h', 'Commander')] = spoon.Commander.show,
+         [{{}, 'space', 'Commander'}] = spoon.Commander.show,
          [singleKey('`', 'run command')] = runCommand,
          [singleKey('f', 'find+')] = {
             [singleKey('D', 'Desktop')] = function() openWithFinder('~/Desktop') end,
@@ -56,7 +70,8 @@ sh.useSpoon{
          [singleKey('t', 'toggle+')] = {
             [singleKey('v', 'file visible')] = function() hs.eventtap.keyStroke({'cmd', 'shift'}, '.') end
          },
-         [singleKey('o', 'open+')] = {
+         [singleKey('a', 'app+')] = {
+            [singleKey('a', 'open')] = spoon.OpenApp.show,
             [singleKey('e', 'Emacs')] = function() hs.application.launchOrFocus('Emacs') end,
             [singleKey('s', 'Safari')] = function() hs.application.launchOrFocus('Safari') end,
             [singleKey('f', 'Finder')] = function() hs.application.launchOrFocus('Finder') end,
@@ -68,12 +83,17 @@ sh.useSpoon{
          },
          [singleKey('i', 'insert+')] = {
             [singleKey('e', 'emoji')] = insertEmoji,
+         },
+         [singleKey('c', 'console+')] = {
+            [singleKey('c', 'Console')] = function() hs.console.hswindow():focus() end,
+            [singleKey('r', 'reload config')] = hs.reload,
          }
+
+
       }
 
       local keyNone = {}
-      local hyperMod = {'control' , 'option', 'command'}
-      hs.hotkey.bind(hyperMod, 'space', spoon.Binder.recursiveBind(mymapWithName))
+      hs.hotkey.bind({'shift'}, 'space', spoon.Binder.recursiveBind(mymapWithName))
 
       spoon.Binder.helperFormat.textFont = 'SF Mono'
       -- config ends here
