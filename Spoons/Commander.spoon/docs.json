@@ -16,7 +16,7 @@
         "parameters" : [
 
         ],
-        "name" : "show",
+        "desc" : "This function shows the command chooser.",
         "notes" : [
 
         ],
@@ -25,7 +25,7 @@
         "returns" : [
 
         ],
-        "desc" : "This function shows the command chooser.",
+        "name" : "show",
         "def" : "Commander.show()"
       },
       {
@@ -42,7 +42,7 @@
           "Commander doesn't test the name against Commander.ignoredCommandList",
           "because it assumes you know what you are doing."
         ],
-        "name" : "addCommand",
+        "desc" : "Add a command to Commander.commandTable",
         "notes" : [
 
         ],
@@ -51,7 +51,7 @@
         "returns" : [
 
         ],
-        "desc" : "Add a command to Commander.commandTable",
+        "name" : "addCommand",
         "def" : "Commander.addCommand(commandTable)"
       },
       {
@@ -64,7 +64,7 @@
         "parameters" : [
 
         ],
-        "name" : "resetCommandTable",
+        "desc" : "This function simply set Commander.commandTable to {},",
         "notes" : [
 
         ],
@@ -73,7 +73,7 @@
         "returns" : [
 
         ],
-        "desc" : "This function simply set Commander.commandTable to {},",
+        "name" : "resetCommandTable",
         "def" : "Commander.resetCommandTable()"
       }
     ],
@@ -89,7 +89,7 @@
         "parameters" : [
 
         ],
-        "name" : "commandTable",
+        "desc" : "This is the table which stores all the commands",
         "notes" : [
 
         ],
@@ -98,7 +98,7 @@
         "returns" : [
 
         ],
-        "desc" : "This is the table which stores all the commands",
+        "name" : "commandTable",
         "def" : "Commander.commandTable"
       },
       {
@@ -115,7 +115,7 @@
         "parameters" : [
 
         ],
-        "name" : "ignoredCommandList",
+        "desc" : "This list contains all the ignored function names,",
         "notes" : [
 
         ],
@@ -124,17 +124,59 @@
         "returns" : [
 
         ],
-        "desc" : "This list contains all the ignored function names,",
+        "name" : "ignoredCommandList",
         "def" : "Commander.ignoredCommandList"
+      },
+      {
+        "doc" : "If you want to switch to a layout when enabled chooser,\nset this to name of that layout",
+        "stripped_doc" : [
+          "If you want to switch to a layout when enabled chooser,",
+          "set this to name of that layout"
+        ],
+        "parameters" : [
+
+        ],
+        "desc" : "If you want to switch to a layout when enabled chooser,",
+        "notes" : [
+
+        ],
+        "signature" : "Commander.forceLayout",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "name" : "forceLayout",
+        "def" : "Commander.forceLayout"
+      },
+      {
+        "doc" : "If you want to switch to a method when enabled chooser,\nset this to name of that method",
+        "stripped_doc" : [
+          "If you want to switch to a method when enabled chooser,",
+          "set this to name of that method"
+        ],
+        "parameters" : [
+
+        ],
+        "desc" : "If you want to switch to a method when enabled chooser,",
+        "notes" : [
+
+        ],
+        "signature" : "Commander.forceMethod",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "name" : "forceMethod",
+        "def" : "Commander.forceMethod"
       }
     ],
     "stripped_doc" : [
 
     ],
-    "type" : "Module",
     "Deprecated" : [
 
     ],
+    "type" : "Module",
     "desc" : "This spoon lets execute commands from other spoon by a chooser.",
     "Constructor" : [
 
@@ -161,7 +203,7 @@
         "parameters" : [
 
         ],
-        "name" : "commandTable",
+        "desc" : "This is the table which stores all the commands",
         "notes" : [
 
         ],
@@ -170,8 +212,50 @@
         "returns" : [
 
         ],
-        "desc" : "This is the table which stores all the commands",
+        "name" : "commandTable",
         "def" : "Commander.commandTable"
+      },
+      {
+        "doc" : "If you want to switch to a layout when enabled chooser,\nset this to name of that layout",
+        "stripped_doc" : [
+          "If you want to switch to a layout when enabled chooser,",
+          "set this to name of that layout"
+        ],
+        "parameters" : [
+
+        ],
+        "desc" : "If you want to switch to a layout when enabled chooser,",
+        "notes" : [
+
+        ],
+        "signature" : "Commander.forceLayout",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "name" : "forceLayout",
+        "def" : "Commander.forceLayout"
+      },
+      {
+        "doc" : "If you want to switch to a method when enabled chooser,\nset this to name of that method",
+        "stripped_doc" : [
+          "If you want to switch to a method when enabled chooser,",
+          "set this to name of that method"
+        ],
+        "parameters" : [
+
+        ],
+        "desc" : "If you want to switch to a method when enabled chooser,",
+        "notes" : [
+
+        ],
+        "signature" : "Commander.forceMethod",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "name" : "forceMethod",
+        "def" : "Commander.forceMethod"
       },
       {
         "doc" : "This list contains all the ignored function names,\nany function matches the name inside this list will not\nbe added to Commander.commandTable.\n\nThe list contains normal lua builtin functions\nand some hammerspoon functions that generally shouldn't\nbe a command, such as init, bindHotkeys, etc.",
@@ -187,7 +271,7 @@
         "parameters" : [
 
         ],
-        "name" : "ignoredCommandList",
+        "desc" : "This list contains all the ignored function names,",
         "notes" : [
 
         ],
@@ -196,7 +280,7 @@
         "returns" : [
 
         ],
-        "desc" : "This list contains all the ignored function names,",
+        "name" : "ignoredCommandList",
         "def" : "Commander.ignoredCommandList"
       },
       {
@@ -213,7 +297,7 @@
           "Commander doesn't test the name against Commander.ignoredCommandList",
           "because it assumes you know what you are doing."
         ],
-        "name" : "addCommand",
+        "desc" : "Add a command to Commander.commandTable",
         "notes" : [
 
         ],
@@ -222,7 +306,7 @@
         "returns" : [
 
         ],
-        "desc" : "Add a command to Commander.commandTable",
+        "name" : "addCommand",
         "def" : "Commander.addCommand(commandTable)"
       },
       {
@@ -235,7 +319,7 @@
         "parameters" : [
 
         ],
-        "name" : "resetCommandTable",
+        "desc" : "This function simply set Commander.commandTable to {},",
         "notes" : [
 
         ],
@@ -244,7 +328,7 @@
         "returns" : [
 
         ],
-        "desc" : "This function simply set Commander.commandTable to {},",
+        "name" : "resetCommandTable",
         "def" : "Commander.resetCommandTable()"
       },
       {
@@ -256,7 +340,7 @@
         "parameters" : [
 
         ],
-        "name" : "show",
+        "desc" : "This function shows the command chooser.",
         "notes" : [
 
         ],
@@ -265,7 +349,7 @@
         "returns" : [
 
         ],
-        "desc" : "This function shows the command chooser.",
+        "name" : "show",
         "def" : "Commander.show()"
       }
     ],

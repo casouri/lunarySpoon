@@ -15,7 +15,7 @@
         "parameters" : [
 
         ],
-        "name" : "show",
+        "desc" : "Call this function to pop chooser to choose applications.",
         "notes" : [
 
         ],
@@ -24,7 +24,7 @@
         "returns" : [
 
         ],
-        "desc" : "Call this function to pop chooser to choose applications.",
+        "name" : "show",
         "def" : "OpenApp.show()"
       }
     ],
@@ -37,7 +37,7 @@
         "parameters" : [
 
         ],
-        "name" : "searchPath",
+        "desc" : "OpenApp search paths in this list for applications.",
         "notes" : [
 
         ],
@@ -46,8 +46,50 @@
         "returns" : [
 
         ],
-        "desc" : "OpenApp search paths in this list for applications.",
+        "name" : "searchPath",
         "def" : "OpenApp.searchPath"
+      },
+      {
+        "doc" : "If you want to switch to a layout when enabled chooser,\nset this to name of that layout",
+        "stripped_doc" : [
+          "If you want to switch to a layout when enabled chooser,",
+          "set this to name of that layout"
+        ],
+        "parameters" : [
+
+        ],
+        "desc" : "If you want to switch to a layout when enabled chooser,",
+        "notes" : [
+
+        ],
+        "signature" : "OpenApp.forceLayout",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "name" : "forceLayout",
+        "def" : "OpenApp.forceLayout"
+      },
+      {
+        "doc" : "If you want to switch to a method when enabled chooser,\nset this to name of that method",
+        "stripped_doc" : [
+          "If you want to switch to a method when enabled chooser,",
+          "set this to name of that method"
+        ],
+        "parameters" : [
+
+        ],
+        "desc" : "If you want to switch to a method when enabled chooser,",
+        "notes" : [
+
+        ],
+        "signature" : "OpenApp.forceMethod",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "name" : "forceMethod",
+        "def" : "OpenApp.forceMethod"
       }
     ],
     "stripped_doc" : [
@@ -56,22 +98,64 @@
     "Deprecated" : [
 
     ],
-    "desc" : "open a chooser to open apps.",
     "type" : "Module",
+    "desc" : "open a chooser to open apps.",
     "Constructor" : [
 
     ],
     "doc" : "open a chooser to open apps.",
-    "Field" : [
+    "Method" : [
 
     ],
     "Command" : [
 
     ],
-    "Method" : [
+    "Field" : [
 
     ],
     "items" : [
+      {
+        "doc" : "If you want to switch to a layout when enabled chooser,\nset this to name of that layout",
+        "stripped_doc" : [
+          "If you want to switch to a layout when enabled chooser,",
+          "set this to name of that layout"
+        ],
+        "parameters" : [
+
+        ],
+        "desc" : "If you want to switch to a layout when enabled chooser,",
+        "notes" : [
+
+        ],
+        "signature" : "OpenApp.forceLayout",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "name" : "forceLayout",
+        "def" : "OpenApp.forceLayout"
+      },
+      {
+        "doc" : "If you want to switch to a method when enabled chooser,\nset this to name of that method",
+        "stripped_doc" : [
+          "If you want to switch to a method when enabled chooser,",
+          "set this to name of that method"
+        ],
+        "parameters" : [
+
+        ],
+        "desc" : "If you want to switch to a method when enabled chooser,",
+        "notes" : [
+
+        ],
+        "signature" : "OpenApp.forceMethod",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "name" : "forceMethod",
+        "def" : "OpenApp.forceMethod"
+      },
       {
         "doc" : "OpenApp search paths in this list for applications.",
         "stripped_doc" : [
@@ -80,7 +164,7 @@
         "parameters" : [
 
         ],
-        "name" : "searchPath",
+        "desc" : "OpenApp search paths in this list for applications.",
         "notes" : [
 
         ],
@@ -89,7 +173,7 @@
         "returns" : [
 
         ],
-        "desc" : "OpenApp search paths in this list for applications.",
+        "name" : "searchPath",
         "def" : "OpenApp.searchPath"
       },
       {
@@ -100,7 +184,7 @@
         "parameters" : [
 
         ],
-        "name" : "show",
+        "desc" : "Call this function to pop chooser to choose applications.",
         "notes" : [
 
         ],
@@ -109,7 +193,7 @@
         "returns" : [
 
         ],
-        "desc" : "Call this function to pop chooser to choose applications.",
+        "name" : "show",
         "def" : "OpenApp.show()"
       }
     ],
