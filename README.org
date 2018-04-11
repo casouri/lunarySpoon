@@ -2,6 +2,16 @@
 
 leader keys in hammerspoon
 
+This config brings spacemacs experience to macOS.
+
+*Features:*
+
+- (=M-x=) Run commands from a chooser. Powered by Commander.
+- Open file by shortcut. 
+- Open applications from a chooser. Powered by OpenApp.
+- window manipulation
+
+
 * Install
 #+BEGIN_SRC shell
 git clone https://github.com/casouri/spaceHammer.git ~/.hammerspoon
