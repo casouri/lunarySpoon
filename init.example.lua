@@ -10,6 +10,7 @@ command_table={}
 sh.useSpoon{
    name = 'Seal',
    config = function()
+      spoon.Seal:loadPlugins{'apps', 'calc', 'safari_bookmarks', 'screencapture', 'useractions', 'viscosity'}
       spoon.Seal:start()
    end
 }
@@ -42,21 +43,13 @@ sh.useSpoon{
    end
 }
 
--- OpenApp
-sh.useSpoon{
-   name = 'OpenApp',
-   config = function()
-      spoon.OpenApp.chooser:bgDark(true)
-      spoon.OpenApp.forceLayout = 'ABC'
-   end
-}
 
--- Binder
+-- RecursiveBinder
 sh.useSpoon{
-   name = 'Binder',
+   name = 'RecursiveBinder',
    config = function()
       -- just a shortcut
-      singleKey = spoon.Binder.singleKey
+      singleKey = spoon.RecursiveBinder.singleKey
       -- Spec of keymap:
       -- Every key is of format {{modifers}, key, (optional) description}
       -- The first two element is what you usually pass into a hs.hotkey.bind() function.
@@ -67,7 +60,7 @@ sh.useSpoon{
       --    And the table have the same format of top table: keys to keys, value to table or function
       mymapWithName = {
          [{{}, 'space', 'Commander'}] = spoon.Commander.show,
-         [{{'ctrl'}, 'space', 'Seal'}] = function() spoon.Seal:show() end,
+         [{{'shift'}, 'space', 'Seal'}] = function() spoon.Seal:show() end,
          [singleKey('`', 'run command')] = runCommand,
          [singleKey('f', 'find+')] = {
             [singleKey('D', 'Desktop')] = function() openWithFinder('~/Desktop') end,
@@ -102,9 +95,9 @@ sh.useSpoon{
       }
 
       local keyNone = {}
-      hs.hotkey.bind({'shift'}, 'space', spoon.Binder.recursiveBind(mymapWithName))
+      hs.hotkey.bind({'shift'}, 'space', spoon.RecursiveBinder.recursiveBind(mymapWithName))
 
-      spoon.Binder.helperFormat.textFont = 'SF Mono'
+      spoon.RecursiveBinder.helperFormat.textFont = 'SF Mono'
       -- config ends here
    end
 }
