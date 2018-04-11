@@ -6,6 +6,14 @@ command_table={}
 -- Config
 --
 
+-- Seal
+sh.useSpoon{
+   name = 'Seal',
+   config = function()
+      spoon.Seal:start()
+   end
+}
+
 -- Commander
 sh.useSpoon{
    name = 'Commander',
@@ -59,6 +67,7 @@ sh.useSpoon{
       --    And the table have the same format of top table: keys to keys, value to table or function
       mymapWithName = {
          [{{}, 'space', 'Commander'}] = spoon.Commander.show,
+         [{{'ctrl'}, 'space', 'Seal'}] = function() spoon.Seal:show() end,
          [singleKey('`', 'run command')] = runCommand,
          [singleKey('f', 'find+')] = {
             [singleKey('D', 'Desktop')] = function() openWithFinder('~/Desktop') end,
