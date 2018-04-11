@@ -1,3 +1,7 @@
+--- === Binder ===
+---
+--- A spoon that let you bind sequential bindings.
+
 local obj={}
 obj.__index = obj
 
@@ -26,6 +30,7 @@ obj.helperEntryEachLine = 5
 obj.helperEntryLengthInChar = 20
 
 --- Binder.helperFormat
+--- Variable
 --- format of helper, the helper is just a hs.alert
 --- default to {atScreenEdge=2,
 ---             strokeColor={ white = 0, alpha = 2 },
@@ -33,10 +38,11 @@ obj.helperEntryLengthInChar = 20
 ---             textSize=20}
 obj.helperFormat = {atScreenEdge=2,
                     strokeColor={ white = 0, alpha = 2 },
-                    textFont='SF Mono',
+                    textFont='Courier',
                     textSize=20}
 
 --- Binder.showBindHelper()
+--- Variable
 --- whether to show helper, can be true of false
 obj.showBindHelper = true
 
