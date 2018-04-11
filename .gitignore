@@ -1,6 +1,6 @@
 Spoons/
-!Spoons/Window.spoon/
-!/Spoons/Binder.spoon/
-!/Spoons/Commander.spoon/
+!/Spoons/Window.spoon
+!/Spoons/Binder.spoon
+!/Spoons/Commander.spoon
 
 init.lua
