@@ -1,8 +1,15 @@
 sh = require('spaceHammer')
+command_table={}
+
 
 --
 -- Config
 --
+
+-- Commander
+sh.useSpoon{
+   name = 'Commander',
+}
 
 -- Emojis
 hs.loadSpoon('Emojis')
@@ -37,6 +44,7 @@ sh.useSpoon{
       -- 2. A table. Then pressing the key bring to another layer of keybindings.
       --    And the table have the same format of top table: keys to keys, value to table or function
       mymapWithName = {
+         [singleKey('h', 'Commander')] = spoon.Commander.show,
          [singleKey('`', 'run command')] = runCommand,
          [singleKey('f', 'find+')] = {
             [singleKey('D', 'Desktop')] = function() openWithFinder('~/Desktop') end,
@@ -66,6 +74,8 @@ sh.useSpoon{
       local keyNone = {}
       local hyperMod = {'control' , 'option', 'command'}
       hs.hotkey.bind(hyperMod, 'space', spoon.Binder.recursiveBind(mymapWithName))
+
+      spoon.Binder.helperFormat.textFont = 'SF Mono'
       -- config ends here
    end
 }
@@ -83,3 +93,4 @@ sh.useSpoon{
       hs.hotkey.bind(hyperMod, 'c', spoon.Window.moveWindowCenter)
    end
 }
+
