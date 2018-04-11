@@ -7,9 +7,9 @@ This config brings spacemacs experience to macOS.
 *Features:*
 
 - (=M-x=) Run commands from a chooser. Powered by Commander.
-- Open file by shortcut. 
-- Open applications from a chooser. Powered by OpenApp.
-- window manipulation
+- Alfred like fuzzy search, powered by Seal.
+- window manipulation, powered by (modified) WinWin.
+- Sequential keybindings powered by RecursiveBinder.
 
 
 * Install
