@@ -21,6 +21,9 @@ cp init.lua.example init.lua
 * Dependencies
 ** Spoons
 - [[https://github.com/Hammerspoon/Spoons/raw/master/Spoons/Emojis.spoon.zip][Emojis]]
+- [[http://www.hammerspoon.org/Spoons/Seal.html#loadPlugins][Seal]]
+- RecursiveBinder
+- [[http://www.hammerspoon.org/Spoons/Commander.html][Commander]]
 
 * Screenshot
 
